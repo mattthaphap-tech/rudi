@@ -1,0 +1,14 @@
+{
+  "name": "rudi-short", "private": true, "version": "1.0.0",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "stills": "node scripts/stills.mjs out/stills/s_ 40,200,300,480,680,850,1000,1100,1180,1270,1370,1470,1600,1730,1840,1950,2020,2100,2300,2430,2520,2600 0.5",
+    "render": "remotion render src/index.ts RudiShort out/rudi-vertical.mp4 --codec=h264 --crf=18 --gl=angle --concurrency=4"
+  },
+  "dependencies": {
+    "@react-three/fiber": "8.17.10", "@react-three/postprocessing": "2.16.3", "@remotion/bundler": "4.0.250", "@remotion/cli": "4.0.250",
+    "@remotion/renderer": "4.0.250", "@remotion/three": "4.0.250", "postprocessing": "6.36.4", "react": "18.3.1", "react-dom": "18.3.1",
+    "remotion": "4.0.250", "three": "0.169.0"
+  },
+  "devDependencies": { "@types/react": "18.3.12", "@types/three": "0.169.0", "typescript": "5.6.3" }
+}
