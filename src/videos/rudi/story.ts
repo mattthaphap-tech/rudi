@@ -103,12 +103,13 @@ const K = (f: number, pos: V3, look: V3, o: KO = {}): Key => ({
 });
 // per-shot subject points (eye height ~1.6)
 const EYE_RUDI: V3 = [0, 1.6, -3.6], EYE_BOSS: V3 = [BOSS_P[0], 1.65, BOSS_P[2]], EYE_BENCH: V3 = [BENCH[0], 1.1, BENCH[2]];
-const TWO: V3 = [1.2, 1.15, -3.2]; // between Rudi and the neighbour / the boss
+const TWO: V3 = [1.3, 1.15, -3.2]; // Rudi (x 0) + neighbour (x 2.4)
+const TWO_B: V3 = [1.4, 1.15, -3.2]; // Rudi + boss (x 2.5) // between Rudi and the neighbour / the boss
 const CAMS: Record<number, Key[]> = {
   1: [K(0, [-34, 6.5, 1.5], [0, 2.4, -6], { fov: 44, rate: 0.0025 }), K(72, [0.8, 1.35, -0.4], EYE_BENCH, { fov: 38, cut: true })],
-  2: [K(164, [1.2, 1.5, 3.9], TWO, { fov: 50 }), K(236, [0.9, 1.55, -0.2], EYE_RUDI, { fov: 34, dur: 22, rate: 0.003, punch: 0.006 })],
+  2: [K(164, [1.3, 1.5, 3.9], TWO, { fov: 54 }), K(236, [0.9, 1.55, -0.2], EYE_RUDI, { fov: 34, dur: 22, rate: 0.003, punch: 0.006 })],
   3: [K(314, [4.4, 1.5, 3.6], [3.1, 1.2, -2.7], { fov: 40 }), K(362, [3.6, 1.55, 0.2], [3.1, 1.45, -2.6], { fov: 34, dur: 20 })],
-  4: [K(443, [1.5, 1.5, 2.9], TWO, { fov: 50 }), K(540, [1.2, 1.35, -0.9], [1.2, 1.25, -3.1], { fov: 34, cut: true, rate: 0.003 }), K(606, [1.2, 1.5, 3.2], TWO, { fov: 50, cut: true })],
+  4: [K(443, [1.5, 1.5, 2.9], TWO, { fov: 54 }), K(540, [1.2, 1.35, -0.9], [1.2, 1.25, -3.1], { fov: 34, cut: true, rate: 0.003 }), K(606, [1.3, 1.5, 3.2], TWO, { fov: 54, cut: true })],
   5: [K(643, [-4.6, 1.2, -0.9], EYE_BENCH, { fov: 38, roll: -0.04 })],
   6: [K(703, [5.8, 1.4, 1.6], [YOUNG_P[0], 1.2, YOUNG_P[2]], { fov: 38, punch: 0.005 })],
   7: [K(796, [-14, 5.5, 2.4], [3, 1.2, -3.5], { fov: 46 }), K(860, [-1.5, 1.6, 2.4], [2.4, 1.3, -3.2], { fov: 40, cut: true })],
@@ -118,12 +119,12 @@ const CAMS: Record<number, Key[]> = {
   11: [K(1216, [-0.9, 1.3, 0.3], [0, 0.95, -3.6], { fov: 40 }), K(1270, [1.8, 2.4, -0.2], [0, 0.6, -3.7], { fov: 40, dur: 28 })],
   12: [K(1324, [1.0, 1.4, 5.2], [9, 1.1, 1.6], { fov: 55 })],
   13: [K(1420, [-2.5, 1.5, 2.6], [6, 1.3, -0.6], { fov: 62 })],
-  14: [K(1526, [1.2, 1.5, 3.9], TWO, { fov: 50 }), K(1615, [4.6, 1.6, 0.9], EYE_BOSS, { fov: 34, cut: true })],
+  14: [K(1526, [1.4, 1.5, 3.9], TWO_B, { fov: 54 }), K(1615, [4.6, 1.6, 0.9], EYE_BOSS, { fov: 34, cut: true })],
   15: [K(1656, [0.6, 1.62, -0.6], EYE_RUDI, { fov: 32, rate: 0.003 })],
   16: [K(1796, [0.9, 1.55, -0.4], EYE_RUDI, { fov: 34 }), K(1882, [1.0, 1.6, 2.6], [1.0, 1.8, -3.3], { fov: 58, cut: true, roll: 0.03, punch: 0.003 })],
   17: [K(1993, [4.6, 1.6, 0.9], EYE_BOSS, { fov: 34 }), K(2040, [4.1, 1.62, 0.5], EYE_BOSS, { fov: 30, dur: 14, rate: 0.004 })],
   18: [K(2074, [3.8, 1.6, 3.8], [3.0, 1.5, -1.2], { fov: 38 }), K(2146, [6, 2.6, 5.5], [12, 1.0, -1.6], { fov: 42, cut: true })],
-  19: [K(2224, [1.2, 1.5, 3.9], TWO, { fov: 50 }), K(2291, [0.7, 1.6, 0.6], [0.7, 1.55, -3.0], { fov: 40, cut: true, rate: 0.003 })],
+  19: [K(2224, [1.4, 1.5, 3.9], TWO_B, { fov: 54 }), K(2291, [0.75, 1.6, 2.2], [0.75, 1.55, -3.0], { fov: 48, cut: true, rate: 0.003 })],
   20: [K(2394, [-2, 1.4, 2.6], [12, 1.1, 1.0], { fov: 50 })],
   21: [K(2484, [0.6, 1.62, -0.6], EYE_RUDI, { fov: 32, rate: 0.003 })],
   22: [K(2560, [0.7, 1.6, -0.5], EYE_RUDI, { fov: 33, rate: 0.003 }), K(2600, [10, 7.5, 10], [0, 1.6, -5], { fov: 44, dur: 43 })],
@@ -159,7 +160,7 @@ export const DOF: Dof[] = [
   { f: 1216, cInf: 10, focus: at([0, 1.0, -3.6]) },
   { f: 1324, cInf: 5, focus: at([9, 1.0, 1.6]) },
   { f: 1420, cInf: 5, focus: at([5, 1.5, -0.4]) },
-  { f: 1526, cInf: 8, focus: at(TWO) },
+  { f: 1526, cInf: 8, focus: at(TWO_B) },
   { f: 1615, cInf: 13, focus: at(EYE_BOSS) },
   { f: 1656, cInf: 14, focus: at(EYE_RUDI) },
   { f: 1796, cInf: 11, focus: at(EYE_RUDI) },
@@ -167,7 +168,7 @@ export const DOF: Dof[] = [
   { f: 1993, cInf: 13, focus: at(EYE_BOSS) },
   { f: 2074, cInf: 8, focus: at([3.0, 1.5, -1.2]) },
   { f: 2146, cInf: 0 },
-  { f: 2224, cInf: 8, focus: at(TWO) },
+  { f: 2224, cInf: 8, focus: at(TWO_B) },
   { f: 2291, cInf: 13, focus: at([0.7, 1.55, -3.0]) },
   { f: 2394, cInf: 4, focus: at([14, 1.0, 1.0]) },
   { f: 2484, cInf: 14, focus: at(EYE_RUDI) },
