@@ -2,11 +2,11 @@ import React from "react";
 import { Composition, Audio, AbsoluteFill, staticFile } from "remotion";
 import { RudiShort, RUDI_FRAMES } from "./videos/rudi/Rudi";
 
-/** the picture + the supplied voice track (public/rudi/voice.mp3). Stills ignore the audio. */
+/** the picture + the finished mix (voice + score + SFX, public/rudi/mix.wav, built by audio/build.py). Stills ignore the audio. */
 const WithVoice: React.FC = () => (
   <AbsoluteFill>
     <RudiShort />
-    <Audio src={staticFile("rudi/voice.mp3")} />
+    <Audio src={staticFile("rudi/mix.wav")} />
   </AbsoluteFill>
 );
 export const Root: React.FC = () => (

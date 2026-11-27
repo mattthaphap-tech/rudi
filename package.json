@@ -1,6 +1,7 @@
 {
   "name": "rudi-short", "private": true, "version": "1.0.0",
   "scripts": {
+    "audio": "ffmpeg -y -i public/rudi/voice.mp3 -ar 48000 -ac 1 -c:a pcm_s24le audio/voice.wav && python3 audio/build.py",
     "studio": "remotion studio src/index.ts",
     "stills": "node scripts/stills.mjs out/stills/s_ 40,200,300,480,680,850,1000,1100,1180,1270,1370,1470,1600,1730,1840,1950,2020,2100,2300,2430,2520,2600 0.5",
     "render": "remotion render src/index.ts RudiShort out/rudi-vertical.mp4 --codec=h264 --crf=18 --gl=angle --concurrency=4"

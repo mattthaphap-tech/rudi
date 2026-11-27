@@ -1,7 +1,7 @@
 # Rudi, Orang Dalam (short animasi vertikal 1080x1920)
 
 Dibuat dari repo mromidev/claude-animated-shorts (template `bridge`, dunianya diganti kampung).
-Suara: `public/rudi/voice.mp3` (88,1 dtk). Shot dipotong di timestamp SRT (`src/videos/rudi/cues.json`).
+Suara: `public/rudi/voice.mp3` (88,1 dtk). Mix akhir (suara + musik + SFX): `public/rudi/mix.wav`, dibuat oleh `audio/build.py` (daftar efek di `audio/cues.md`; `npm run audio` untuk membuat ulang, butuh python3 + numpy + scipy + ffmpeg). Shot dipotong di timestamp SRT (`src/videos/rudi/cues.json`).
 
     npm install
     npm run studio                      # preview + scrub di browser (paling cepat untuk cek)

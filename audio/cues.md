@@ -1,0 +1,69 @@
+# Rudi: sound cues (times in s, from the picture frames / 30 and the SRT)
+
+- length 88.111 s (voice 88.111 s), integrated -15.1 LUFS, true peak -1.20 dBTP, max limiter reduction -2.01 dB
+- voice vs music+sfx while speaking: median 10.2 LU, 10th percentile 5.6 LU
+
+## SFX events (t, name, level dBFS before the stem gain)
+-    0.00  bed: day birds+breeze (0 - 44.4 s)  (-40)
+-    8.79  spark twinkle (neighbour impressed)  (-22)
+-    9.04  'ooh' neighbour  (-24)
+-   10.51  'hm?' neighbour believes  (-28)
+-   18.36  cash rustle: bundle out  (-20)
+-   19.36  cash handed over  (-19)
+-   19.81  coin clink  (-22)
+-   23.40  tick chime (passed)  (-23)
+-   23.47  burst sparkle  (-29)
+-   23.70  'yay' young  (-27)
+-   26.33  village buzz (crowd)  (-22)
+-   30.47  queue murmur  (-21)
+-   34.07  payment murmur  (-23)
+-   34.57  cash rustle (queue pays)  (-27)
+-   35.12  cash rustle (queue pays)  (-29)
+-   35.47  coin clink  (-26)
+-   35.77  cash rustle (queue pays)  (-27)
+-   36.27  cash rustle (queue pays)  (-29)
+-   36.67  coin clink  (-26)
+-   36.97  cash rustle (queue pays)  (-27)
+-   37.47  cash rustle (queue pays)  (-29)
+-   38.23  low hit: Rudi pale  (-19)
+-   38.78  sweat drop  (-26)
+-   39.68  sweat drop  (-27)
+-   40.73  heavy cash drop  (-18)
+-   43.83  bed: evening crickets+breeze  (-39)
+-   43.85  whoosh: to evening  (-20)
+-   43.93  car arrives (engine+gravel)  (-14)
+-   46.58  brake squeak  (-26)
+-   47.88  door thunk  (-15)
+-   48.38  boss footstep  (-22)
+-   48.84  boss footstep  (-22)
+-   49.30  boss footstep  (-22)
+-   49.76  boss footstep  (-22)
+-   50.22  boss footstep  (-22)
+-   50.68  boss footstep  (-22)
+-   55.90  sweat drop  (-24)
+-   56.30  gulp  (-26)
+-   57.10  sweat drop  (-24)
+-   58.30  sweat drop  (-24)
+-   62.71  pop: thought bubble  (-17)
+-   62.77  chime: 40 passes  (-24)
+-   68.12  sparkle: Gampang  (-26)
+-   68.83  bed: day (to end)  (-40)
+-   68.83  whoosh: a week later  (-20)
+-   69.28  chime: results board  (-20)
+-   71.43  crowd cheer  (-17)
+-   71.62  crowd cheer (second)  (-20)
+-   76.07  handshake clasp  (-26)
+-   76.48  sparkle: whisper  (-28)
+-   80.35  car leaves (start, drive-off)  (-16)
+-   83.00  dazed swirl  (-24)
+-   85.74  final twinkle  (-26)
+
+## Music sections
+- day: 0.00 - 38.23 s, target -10.0 LU under the voice
+- pale: 38.23 - 44.13 s, target -12.0 LU under the voice
+- night: 44.13 - 68.02 s, target -12.5 LU under the voice
+- turn: 68.09 - 69.13 s, target -9.0 LU under the voice
+- turn-run: 68.09 - 69.13 s, target -9.0 LU under the voice
+- week: 69.13 - 79.80 s, target -9.5 LU under the voice
+- bye: 79.80 - 84.33 s, target -11.0 LU under the voice
+- end: 84.33 - 88.11 s, target -10.0 LU under the voice
