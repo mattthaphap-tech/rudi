@@ -54,15 +54,23 @@ const Inner: React.FC<{ id: number; kit: Kit }> = ({ id, kit }) => {
   const world = useMemo(() => new World(kit), [kit]);
   const target = useMemo(() => new THREE.Vector3(), []);
   const on = useMemo(toggles, []);
-  const fx = useMemo(() => ({
-    ink: new InkPass(scene, camera as THREE.PerspectiveCamera),
-    lens: new LensBlur({ maxCoC: 24, nearScale: 1.2 }),
-    bloom: makeBloom(),
-    tone: new ToneMappingEffect({ mode: ToneMappingMode.NEUTRAL }),
-    grade: new GradeEffect(GRADES.day, GRADE_STRENGTH.day),
-    grain: new GrainEffect({ amount: 0.025, cellPx: 1.5 }), // film grain, OFF by default (inputProps post.grain): the reference measures no grain and it quadruples the file size
-  }), [camera, scene]);
-  useEffect(() => () => fx.ink.dispose(), [fx]);
+  const fx = useMemo(() => {
+    const ink = new InkPass(scene, camera as THREE.PerspectiveCamera);
+    // R3F applies <primitive dispose={null}> as `ink.dispose = null`, so capture the real
+    // dispose here — the cleanup below used to call `fx.ink.dispose()` after R3F had nulled
+    // it, crashing every chunk at the first crossfade unmount (frames 1328, 2078, ...).
+    const disposeInk = () => ink.dispose();
+    return {
+      ink,
+      disposeInk,
+      lens: new LensBlur({ maxCoC: 24, nearScale: 1.2 }),
+      bloom: makeBloom(),
+      tone: new ToneMappingEffect({ mode: ToneMappingMode.NEUTRAL }),
+      grade: new GradeEffect(GRADES.day, GRADE_STRENGTH.day),
+      grain: new GrainEffect({ amount: 0.025, cellPx: 1.5 }), // film grain, OFF by default (inputProps post.grain): the reference measures no grain and it quadruples the file size
+    };
+  }, [camera, scene]);
+  useEffect(() => () => fx.disposeInk(), [fx]);
   const post = useMemo(() => (
     <Composer multisampling={4}>
       {on.ink ? <primitive object={fx.ink} dispose={null} /> : null}
