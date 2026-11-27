@@ -1,0 +1,40 @@
+name: Render Rudi stills (check c)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  render-still:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        frame: [200, 480, 1600, 2300]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install Google Chrome
+        run: |
+          wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt-get update
+          sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+          google-chrome --version
+      - name: Install dependencies
+        run: npm install
+      - name: Reassemble voice
+        run: |
+          mkdir -p public/rudi
+          base64 -d audio-parts/voice.mp3.b64.part-00 > public/rudi/voice.mp3
+          ls -la public/rudi/voice.mp3
+      - name: Render still frame ${{ matrix.frame }}
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: node scripts/stills-gh.mjs out/stills/c_ ${{ matrix.frame }} 0.5
+      - uses: actions/upload-artifact@v4
+        with:
+          name: still-c-${{ matrix.frame }}
+          path: out/stills/c_${{ matrix.frame }}.jpg
+          retention-days: 7
