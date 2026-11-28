@@ -56,10 +56,11 @@ const Inner: React.FC<{ id: number; kit: Kit }> = ({ id, kit }) => {
   const on = useMemo(toggles, []);
   const fx = useMemo(() => {
     const ink = new InkPass(scene, camera as THREE.PerspectiveCamera);
-    // R3F applies <primitive dispose={null}> as `ink.dispose = null`, so capture the real
-    // dispose here — the cleanup below used to call `fx.ink.dispose()` after R3F had nulled
-    // it, crashing every chunk at the first crossfade unmount (frames 1328, 2078, ...).
-    const disposeInk = () => ink.dispose();
+    // R3F applies <primitive dispose={null}> as `ink.dispose = null`, so bind the real
+    // dispose NOW. (v1 fix used `() => ink.dispose()` — wrong: that re-reads the property
+    // at call time, when R3F has already nulled it, and still crashed at frames 1328/2078
+    // with "ink.dispose is not a function". Binding captures the prototype method itself.)
+    const disposeInk = ink.dispose.bind(ink);
     return {
       ink,
       disposeInk,
